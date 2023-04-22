@@ -61,7 +61,8 @@ const DialogButton = ({
         await button.onPress?.(content);
         setLoading(false);
         closeAlert();
-      }}>
+      }}
+    >
       {isLoading && <ActivityIndicator animating color={colors.primaryText} />}
       {!isLoading && (
         <Text secondary={button.isCancel} red={button.isNegative} brandPrimary={button.isPositive} text={button.text} />
@@ -86,7 +87,7 @@ const DialogView = () => {
       onChangeText(mProps.inputProps?.value || '');
       animation.value = withTiming(1, { duration: 250 });
     };
-    EventEmitter.register(EventTypes.SHOW_ALERT, showAlert);
+    // EventEmitter.register(EventTypes.SHOW_ALERT, showAlert);
     return () => {
       EventEmitter.unregister(showAlert);
     };

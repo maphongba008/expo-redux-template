@@ -1,3 +1,3 @@
-import App from "./src/features/app";
+import App from './src';
 
 export default App;

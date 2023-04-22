@@ -1,6 +1,6 @@
 import React from 'react';
-import AS from 'react-native-actionsheet';
-import { strings } from 'localization';
+// import AS from 'react-native-actionsheet';
+// import { strings } from 'localization';
 import EventEmitter, { EventTypes } from 'utils/EventEmitter';
 
 type Option = {
@@ -38,22 +38,23 @@ const Provider = () => {
     return null;
   }
   const { title, buttons } = option;
-  return (
-    <AS
-      ref={ref}
-      title={title}
-      options={[...buttons.map((e) => e.text), strings.common.cancel]}
-      cancelButtonIndex={buttons.length}
-      // destructiveButtonIndex={1}
-      onPress={(index: number) => {
-        const btn = buttons[index];
-        if (!btn) {
-          return;
-        }
-        btn.onPress?.();
-      }}
-    />
-  );
+  return null;
+  // return (
+  //   <AS
+  //     ref={ref}
+  //     title={title}
+  //     options={[...buttons.map((e) => e.text), strings.common.cancel]}
+  //     cancelButtonIndex={buttons.length}
+  //     // destructiveButtonIndex={1}
+  //     onPress={(index: number) => {
+  //       const btn = buttons[index];
+  //       if (!btn) {
+  //         return;
+  //       }
+  //       btn.onPress?.();
+  //     }}
+  //   />
+  // );
 };
 
 export const ActionSheet = {

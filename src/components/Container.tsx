@@ -6,6 +6,7 @@ import { Theme } from 'types';
 
 import { Box, BoxProps } from './Box';
 import { StyleSheet } from './StyleSheet';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = {
   noStatusBar?: boolean;
@@ -15,9 +16,10 @@ type Props = {
 
 export const Container = ({ noStatusBar, statusBarStyle, hasFooter, ...props }: Props) => {
   const styles = makeStyle(useTheme());
+  const { top } = useSafeAreaInsets();
   return (
     <Box full {...props} style={[styles.container, props.style]}>
-      {!noStatusBar && <Box style={[styles.statusBar, statusBarStyle]} />}
+      {!noStatusBar && <Box style={[styles.statusBar, { height: top }, statusBarStyle]} />}
       {props.children}
       {hasFooter && <Box style={styles.footer} />}
     </Box>
@@ -30,10 +32,9 @@ const makeStyle = (colors: Theme) =>
       backgroundColor: colors.backgroundColor,
     },
     statusBar: {
-      height: dimensions.statusBarHeight,
       backgroundColor: colors.backgroundColor,
     },
     footer: {
-      height: dimensions.paddingBottom,
+      // height: dimensions.paddingBottom,
     },
   });
